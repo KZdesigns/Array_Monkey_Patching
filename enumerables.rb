@@ -70,7 +70,7 @@ class Array
     end
 
     def my_zip(*arrays)
-        zip = []
+        zipped = []
 
         self.length.times do |i|
             subzip = [self[i]]
@@ -79,10 +79,10 @@ class Array
                 subzip << array[i]
             end
 
-            zip << subzip
+            zipped << subzip
         end
 
-        zip
+        zipped
     end
 
     def my_rotate(num=1)
@@ -93,15 +93,13 @@ class Array
 
     def my_join(separator="")
         join = ""
-        i = 0
 
-        self.my_each do |ele|
+        self.length.times do |i|
             if i == 0
-                join += ele
+                join += self[i]
             else
-                join += (separator+ele)
+                join += separator + self[i]
             end
-            i += 1
         end
 
         join
@@ -109,11 +107,11 @@ class Array
 
     def my_reverse
         reversed = []
-        
+
         self.my_each do |ele|
             reversed.unshift(ele)
         end
-        
+
         reversed
     end
 
@@ -170,15 +168,15 @@ end
 
 
 # my_flatten
-# [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+# p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 # My Zip
 # a = [ 4, 5, 6 ]
 # b = [ 7, 8, 9 ]
-# [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
-# a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
-# [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
+# p [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+# p a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
+# p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
 # c = [10, 11, 12]
 # d = [13, 14, 15]
-# [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+# p [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
